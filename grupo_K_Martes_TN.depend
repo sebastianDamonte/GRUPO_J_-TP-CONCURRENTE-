@@ -143,3 +143,86 @@
 	<queue>
 	"semaforo.h"
 
+1780610089 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\buffer.cpp
+	<iostream>
+	"buffer.h"
+
+1780614966 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\buffer.h
+	"paquete.h"
+	<condition_variable>
+	<vector>
+	<mutex>
+
+1780614799 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\paquete.h
+	<chrono>
+
+1780614639 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\consumidor.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	"processingQueue.h"
+	"buffer.h"
+	"semaforo.h"
+	"productor.h"
+
+1780612491 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\processingqueue.h
+	"buffer.h"
+	"waitingQueue.h"
+
+1780610090 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\waitingqueue.h
+	"buffer.h"
+
+1780613560 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\semaforo.h
+	<mutex>
+	<condition_variable>
+
+1780615034 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\main.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	<condition_variable>
+	"paquete.h"
+	"buffer.h"
+	"productor.h"
+	"consumidor.h"
+	"semaforo.h"
+
+1780614464 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\productor.h
+
+1780614584 d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\consumidor.h
+	"buffer.h"
+	"productor.h"
+
+1780612569 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\processingqueue.cpp
+	"processingQueue.h"
+	"waitingQueue.h"
+
+1780614950 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\productor.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	<ctime>
+	<cstdlib>
+	"buffer.h"
+	"semaforo.h"
+	"productor.h"
+
+1780613574 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\semaforo.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	"semaforo.h"
+
+1780610090 source:d:\unla\archivos codeblocoks c++\grupo_j_-tp-concurrente-\waitingqueue.cpp
+	<chrono>
+	"waitingQueue.h"
+	"buffer.h"
+

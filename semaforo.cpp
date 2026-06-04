@@ -8,6 +8,10 @@
 
 using namespace std;
 
+int totalConsumidos = 0;
+mutex mtxConsumidos;
+mutex mtxCout;
+
 Semaforo hay_datos;
 Semaforo hay_datos_cinta;
 

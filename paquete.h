@@ -4,6 +4,8 @@
 #include <chrono>
 using namespace std;
 
+extern int idPaquete;
+
 struct Paquete {
     int id;
     int prioridad;          //0 = baja, 1 = alta
