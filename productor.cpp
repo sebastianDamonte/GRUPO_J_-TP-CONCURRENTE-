@@ -17,6 +17,7 @@ void productor(){
         Paquete p;
         p.id = i;
         p.prioridad = rand() % 2;
+        p.prioridadOriginal = p.prioridad; //aca guardamos la prioridad original para mostrar en la ejecucion
         p.fechaCreacion = chrono::steady_clock::now();
         p.fechaEntradaWaiting = chrono::steady_clock::now();
 

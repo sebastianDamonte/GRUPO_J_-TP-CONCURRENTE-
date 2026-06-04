@@ -7,6 +7,7 @@ using namespace std;
 struct Paquete {
     int id;
     int prioridad;          //0 = baja, 1 = alta
+    int prioridadOriginal;  // para saber si fue promovido por aging
     chrono::steady_clock::time_point fechaCreacion;
     chrono::steady_clock::time_point fechaEntradaWaiting;
 };

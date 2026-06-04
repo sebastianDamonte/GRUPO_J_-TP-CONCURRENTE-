@@ -8,6 +8,9 @@
 
 using namespace std;
 
+Semaforo hay_datos;
+Semaforo hay_datos_cinta;
+
 void init(Semaforo&s, int n){
     s.contador = n;
 

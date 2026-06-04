@@ -11,26 +11,45 @@
 using namespace std;
 
 void consumidor() {
+    int consumidos = 0;
     for(int i = 0; i < tam; i++) {
 
-        if(processingQueue.cola.size() < processingQueue.capacidad) {
-            wait(hay_datos);  // espera que haya paquete en waitingQueue
+        wait(hay_datos);
 
-            waitingQueue.mtx.lock();
-            processingQueue.mtx.lock();
-            agregarALaCinta(waitingQueue, processingQueue);
-            processingQueue.mtx.unlock();
-            waitingQueue.mtx.unlock();
+        this_thread::sleep_for(chrono::milliseconds(420));
 
-            signal(hay_datos_cinta);  // avisa que hay paquete en processingQueue
-        }
+        waitingQueue.mtx.lock();
+        processingQueue.mtx.lock();
 
-        wait(hay_datos_cinta);  // espera que haya paquete en processingQueue
+        // guardamos el paquete que se va a agregar para mostrarlo
+        int indice = buscarMayorPrioridad();
+        Paquete p = waitingQueue.cola[indice];
+        agregarALaCinta();
+
+        processingQueue.mtx.unlock();
+        waitingQueue.mtx.unlock();
+
+        cout << "[CINTA] Paquete #" << p.id
+        << " | prioridad original: " << p.prioridadOriginal
+        << " | prioridad actual: " << p.prioridad
+        << (p.prioridadOriginal == 0 && p.prioridad == 1 ? " | PROMOVIDO POR AGING" : "")
+        << endl;
 
         this_thread::sleep_for(chrono::milliseconds(550));
 
         processingQueue.mtx.lock();
-        processingQueue.cola.erase(processingQueue.cola.begin()); //como tiene que ser un vector porque lo indicamos dentro del struct Buffer, lo borramos con erase porque no acepta pop CREO los vectores
+        processingQueue.cola.erase(processingQueue.cola.begin());
         processingQueue.mtx.unlock();
+
+        consumidos++;
+        cout << "[RETIRADO] Paquete #" << p.id << " | consumidos hasta ahora: " << consumidos << endl;
+
+        this_thread::sleep_for(chrono::milliseconds(270));
     }
+        cout << "\nConsumidos total: " << consumidos << endl;
+        if(consumidos == tam) {
+            cout << "Todos consumidos correctamente ningun paquete perdido" << endl;
+        } else {
+            cout << "ERROR - se perdieron paquetes" << endl;
+        }
 }

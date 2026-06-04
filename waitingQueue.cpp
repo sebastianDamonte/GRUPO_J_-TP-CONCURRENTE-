@@ -1,6 +1,7 @@
-#ifndef WAITINGQUEUE_H_INCLUDED
-#define WAITINGQUEUE_H_INCLUDED
+#include <chrono>
 #include "waitingQueue.h"
+#include "buffer.h"
+using namespace std;
 
 void aplicarAging() { //con esto calculamos el tiempo que estan los paquetes de prioridad baja
     for (int i = 0; i < waitingQueue.cola.size(); i++) {
@@ -17,7 +18,7 @@ void aplicarAging() { //con esto calculamos el tiempo que estan los paquetes de 
 
 int buscarMayorPrioridad()
 {
-    aplicarAging(waitingQueue); //hace el "paso del tiempo" para las prioridades bajas
+    aplicarAging(); //hace el "paso del tiempo" para las prioridades bajas
     int mayorPrio = 0;
     for(int i = 1;i < waitingQueue.cola.size();i++)
     {
