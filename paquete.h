@@ -1,11 +1,14 @@
 #ifndef PAQUETE_H_INCLUDED
 #define PAQUETE_H_INCLUDED
 
-struct Paquete{
+#include <chrono>
+using namespace std;
+
+struct Paquete {
     int id;
-    int prioridad;
-    //tiempo de entrada (no se como se hace, creo que es un long long o algoa asi.
-    //no hace falta crear nada de paquete si no me equivoco.
+    int prioridad;          //0 = baja, 1 = alta
+    chrono::steady_clock::time_point fechaCreacion;
+    chrono::steady_clock::time_point fechaEntradaWaiting;
 };
 
-#endif // PAQUETE_H_INCLUDED
+#endif

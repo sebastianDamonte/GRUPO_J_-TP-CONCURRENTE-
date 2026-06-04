@@ -10,6 +10,8 @@ struct Semaforo{
 };
 extern Semaforo hay_espacio;
 extern Semaforo hay_datos;
+extern Semaforo hay_datos_cinta;
+extern Semaforo hay_espacio_cinta;
 void init(Semaforo&s, int n);
 void wait(Semaforo&s);
 void signal(Semaforo&s);
