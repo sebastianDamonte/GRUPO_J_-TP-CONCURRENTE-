@@ -11,6 +11,11 @@ using namespace std;
 int totalConsumidos = 0;
 mutex mtxConsumidos;
 mutex mtxCout;
+long long tiempoTotalAlta = 0;
+long long tiempoTotalBaja = 0;
+int cantAlta = 0;
+int cantBaja = 0;
+mutex mtxMetricas;
 
 Semaforo hay_datos;
 Semaforo hay_datos_cinta;

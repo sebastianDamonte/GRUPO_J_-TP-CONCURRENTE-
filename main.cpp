@@ -33,13 +33,13 @@ int main()
 
 //• Configuración A: 1 Productor y 2 Consumidores
 //(Escenario de baja recepción / alta disponibilidad).
-
-//    thread t1(productor);
-//    thread t2(consumidor);
-//    thread t3(consumidor);
-//    t1.join();
-//    t2.join();
-//    t3.join();
+//
+  thread t1(productor);
+  thread t2(consumidor);
+  thread t3(consumidor);
+   t1.join();
+  t2.join();
+   t3.join();
 
 
 //Configuración B: 3 Productores y 1 Consumidor (Escenario de congestión / cuello de botella).
@@ -55,20 +55,28 @@ int main()
 
 //Configuración C: 3 Productores y 3 Consumidores (Escenario de alta concurrencia simétrica).
 
+//
+//    thread t1(productor);
+//    thread t2(productor);
+//    thread t3(productor);
+//    thread t4(consumidor);
+//    thread t5(consumidor);
+//    thread t6(consumidor);
+//
+//    t1.join();
+//    t2.join();
+//    t3.join();
+//    t4.join();
+//    t5.join();
+//    t6.join();
 
-    thread t1(productor);
-    thread t2(productor);
-    thread t3(productor);
-    thread t4(consumidor);
-    thread t5(consumidor);
-    thread t6(consumidor);
-
-    t1.join();
-    t2.join();
-    t3.join();
-    t4.join();
-    t5.join();
-    t6.join();
+    cout << "\n===== METRICAS FINALES =====" << endl;
+cout << "Total producidos: " << producidos << endl;
+cout << "Total consumidos: " << totalConsumidos << endl;
+if(cantAlta > 0)
+    cout << "Tiempo promedio espera ALTA prioridad: " << tiempoTotalAlta / cantAlta << "ms" << endl;
+if(cantBaja > 0)
+    cout << "Tiempo promedio espera BAJA prioridad: " << tiempoTotalBaja / cantBaja << "ms" << endl;
 
     return 0;
 }

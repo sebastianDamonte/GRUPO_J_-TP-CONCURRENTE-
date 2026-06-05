@@ -30,6 +30,7 @@ void productor(){
         waitingQueue.mtx.unlock();
 
         signal(hay_datos);
+        this_thread::sleep_for(chrono::milliseconds(90));
     }
 
     // ← lock para que no se pise con los consumidores

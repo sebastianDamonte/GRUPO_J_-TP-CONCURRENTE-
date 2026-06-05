@@ -8,6 +8,11 @@ using namespace std;
 extern int totalConsumidos;
 extern mutex mtxConsumidos;
 extern mutex mtxCout;
+extern long long tiempoTotalAlta;
+extern long long tiempoTotalBaja;
+extern int cantAlta;
+extern int cantBaja;
+extern mutex mtxMetricas;
 
 struct Semaforo{
     int contador;

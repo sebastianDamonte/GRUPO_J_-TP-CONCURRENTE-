@@ -38,6 +38,14 @@ void consumidor() {
 
         waitingQueue.mtx.lock();
         processingQueue.mtx.lock();
+
+        while(processingQueue.cola.size() >= 5) {
+    processingQueue.mtx.unlock();
+    waitingQueue.mtx.unlock();
+    this_thread::sleep_for(chrono::milliseconds(50));
+    waitingQueue.mtx.lock();
+    processingQueue.mtx.lock();
+}
         int indice = buscarMayorPrioridad();
         Paquete p = waitingQueue.cola[indice];
         agregarALaCinta(indice);
@@ -53,7 +61,23 @@ void consumidor() {
                  << endl;
         }
 
+
         this_thread::sleep_for(chrono::milliseconds(550));
+
+            long long espera = chrono::duration_cast<chrono::milliseconds>(
+        chrono::steady_clock::now() - p.fechaCreacion
+    ).count();
+
+    {
+        lock_guard<mutex> lg(mtxMetricas);
+        if(p.prioridadOriginal == 1) {
+            tiempoTotalAlta += espera;
+            cantAlta++;
+        } else {
+            tiempoTotalBaja += espera;
+            cantBaja++;
+        }
+    }
 
         processingQueue.mtx.lock();
         processingQueue.cola.erase(processingQueue.cola.begin());
@@ -73,4 +97,6 @@ void consumidor() {
         cout << "\nConsumidos por este hilo: " << consumidos << endl;
         cout << "Todos consumidos correctamente, ningun paquete perdido" << endl;
     }
+
+    this_thread::sleep_for(chrono::milliseconds(420));
 }
