@@ -20,7 +20,9 @@ void consumidor() {
         // CHECK 1: antes de wait, para no bloquearse si ya terminamos
         {
             lock_guard<mutex> lg(mtxConsumidos);
-            if(totalConsumidos >= producidos) break;
+            if(totalConsumidos >= producidos && productoresProduciendo == 0){
+                break;
+                }
         }
 
         wait(hay_datos);

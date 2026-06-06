@@ -230,7 +230,7 @@
 	<iostream>
 	"buffer.h"
 
-1780688721 d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\buffer.h
+1780756740 d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\buffer.h
 	"paquete.h"
 	<condition_variable>
 	<vector>
@@ -239,7 +239,7 @@
 1780615626 d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\paquete.h
 	<chrono>
 
-1780688721 source:d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\main.cpp
+1780756397 source:d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\main.cpp
 	<iostream>
 	<thread>
 	<chrono>
@@ -252,7 +252,7 @@
 	"consumidor.h"
 	"semaforo.h"
 
-1780615626 d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\productor.h
+1780755900 d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\productor.h
 
 1780615626 d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\consumidor.h
 	"buffer.h"
@@ -286,7 +286,7 @@
 	"waitingQueue.h"
 	"buffer.h"
 
-1780685786 source:d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\productor.cpp
+1780756767 source:d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\productor.cpp
 	<iostream>
 	<thread>
 	<chrono>
@@ -298,7 +298,7 @@
 	"semaforo.h"
 	"productor.h"
 
-1780688220 source:d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\consumidor.cpp
+1780756060 source:d:\facultad\3 a—o\programacion concurrente\trabajo practico\grupo_j_-tp-concurrente-\consumidor.cpp
 	<iostream>
 	<thread>
 	<chrono>

@@ -12,28 +12,32 @@
 using namespace std;
 int idPaquete = 0;
 int producidos = 0;
+mutex mtxProductoresProduciendo;
+int productoresProduciendo = 1;
 
 void productor(){
     //int producidos = 0;
-    for(int i = 0; i < tam; i++){
-        Paquete p;
-        p.id = idPaquete;
-        p.prioridad = rand() % 2;
-        p.prioridadOriginal = p.prioridad;
-        p.fechaCreacion = chrono::steady_clock::now();
-        p.fechaEntradaWaiting = chrono::steady_clock::now();
-
-        waitingQueue.mtx.lock();
-        waitingQueue.cola.push_back(p);
-        producidos++;
-        idPaquete++;
+   while(true){
+    waitingQueue.mtx.lock();
+    if(producidos >= tam){
         waitingQueue.mtx.unlock();
-
-        signal(hay_datos);
-        this_thread::sleep_for(chrono::milliseconds(90));
+        break;
     }
+    Paquete p;
+    p.id = idPaquete;
+    p.prioridad = rand() % 2;
+    p.prioridadOriginal = p.prioridad;
+    p.fechaCreacion = chrono::steady_clock::now();
+    p.fechaEntradaWaiting = chrono::steady_clock::now();
+    waitingQueue.cola.push_back(p);
+    producidos++;
+    idPaquete++;
+    waitingQueue.mtx.unlock();
 
-    // ← lock para que no se pise con los consumidores
-    lock_guard<mutex> lg(mtxCout);
-    cout << "\nProducidos: " << producidos << endl;
+    signal(hay_datos);
+    this_thread::sleep_for(chrono::milliseconds(90));
+}
+mtxProductoresProduciendo.lock();
+productoresProduciendo--;
+mtxProductoresProduciendo.unlock();
 }

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int tam = 5;
+const int tam = 99;
 const int limit=5;
 
 struct Buffer
