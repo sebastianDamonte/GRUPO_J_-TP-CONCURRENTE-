@@ -3,30 +3,41 @@
 #include <chrono>
 #include <mutex>
 #include <queue>
+#include <ctime>
+#include <cstdlib>
+#include "buffer.h"
+#include "semaforo.h"
+#include "productor.h"
 
-#include"buffer.h"
-#include"semaforo.h"
 using namespace std;
-
-Semaforo hay_datos;
-Semaforo hay_espacio;
+int idPaquete = 0;
+int producidos = 0;
+mutex mtxProductoresProduciendo;
+int productoresProduciendo = 1;
 
 void productor(){
-    int producidos=0;
-    for(int i=0; i<tam; i++){
-            //esto espera lugar
-        wait(hay_espacio);
-        //crea el paquete, dsp hay q agregarle la tercer variable
-        Paquete p = {i, (rand()%2)};
-        //tomamos la cola
-        mtx_buffer.lock();
-        buffer.push(p);
-        producidos++;
-        mtx_buffer.unlock();
-        //avisamos que hay dato disponible
-        signal(hay_datos);
-
+    //int producidos = 0;
+   while(true){
+    waitingQueue.mtx.lock();
+    if(producidos >= tam){
+        waitingQueue.mtx.unlock();
+        break;
     }
-    cout<<"\nProducidos: "<<producidos<<endl;
+    Paquete p;
+    p.id = idPaquete;
+    p.prioridad = rand() % 2;
+    p.prioridadOriginal = p.prioridad;
+    p.fechaCreacion = chrono::steady_clock::now();
+    p.fechaEntradaWaiting = chrono::steady_clock::now();
+    waitingQueue.cola.push_back(p);
+    producidos++;
+    idPaquete++;
+    waitingQueue.mtx.unlock();
 
+    signal(hay_datos);
+    this_thread::sleep_for(chrono::milliseconds(90));
+}
+mtxProductoresProduciendo.lock();
+productoresProduciendo--;
+mtxProductoresProduciendo.unlock();
 }

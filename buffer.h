@@ -1,12 +1,26 @@
 #ifndef BUFFER_H_INCLUDED
 #define BUFFER_H_INCLUDED
 #include"paquete.h"
-const int tam=1550;
-const int limit=5;
+#include <condition_variable>
+#include <vector>
+#include <mutex>
 
 using namespace std;
 
-extern mutex mtx_buffer;
-extern queue<Paquete> buffer;
+const int tam = 99;
+const int limit=5;
+
+struct Buffer
+{
+    vector<Paquete> cola;
+    mutex mtx;
+    condition_variable cv;
+    int capacidad;
+};
+
+extern Buffer waitingQueue;
+extern Buffer processingQueue;
+
+
 
 #endif // COLAS_H_INCLUDED

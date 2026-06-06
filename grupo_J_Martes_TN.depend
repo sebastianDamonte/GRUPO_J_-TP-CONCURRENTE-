@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1780363477 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\main.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	<condition_variable>
+	"paquete.h"
+	"buffer.h"
+	"productor.h"
+	"consumidor.h"
+
+1780357002 c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\paquete.h
+
+1780361933 c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\buffer.h
+	"paquete.h"
+
+1780358404 c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\productor.h
+
+1780357252 c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\consumidor.h
+	"buffer.h"
+
+1780364145 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\productor.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	"buffer.h"
+	"semaforo.h"
+
+1780357559 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\buffer.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	"buffer.h"
+
+1780364362 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\consumidor.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	"buffer.h"
+	"semaforo.h"
+
+1780358742 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\processingqueue.cpp
+
+1780358701 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\waitingqueue.cpp
+
+1780364022 c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\semaforo.h
+	<mutex>
+	<condition_variable>
+
+1780363991 source:c:\users\sebid\desktop\programacion concurrente tp\grupo_k_martes_tn\semaforo.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	<mutex>
+	<queue>
+	"semaforo.h"
+

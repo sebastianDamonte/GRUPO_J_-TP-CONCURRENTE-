@@ -3,13 +3,26 @@
 #include <mutex>
 #include <condition_variable>
 
+using namespace std;
+
+extern int totalConsumidos;
+extern mutex mtxConsumidos;
+extern mutex mtxCout;
+extern long long tiempoTotalAlta;
+extern long long tiempoTotalBaja;
+extern int cantAlta;
+extern int cantBaja;
+extern mutex mtxMetricas;
+
 struct Semaforo{
     int contador;
-    std::mutex mtx;
-    std::condition_variable cv;
+    mutex mtx;
+    condition_variable cv;
 };
-extern Semaforo hay_espacio;
+
 extern Semaforo hay_datos;
+extern Semaforo hay_datos_cinta;
+
 void init(Semaforo&s, int n);
 void wait(Semaforo&s);
 void signal(Semaforo&s);
